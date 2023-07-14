@@ -4,93 +4,98 @@ import { Route, Switch } from "react-router-dom"
 
 import NavBar from './NavBar'
 import Header from './Header'
-import HotelList from './HotelList'
-import NewHotelForm from './NewHotelForm'
-import UpdateHotelForm from './UpdateHotelForm'
+import PlayerSearch from './PlayerSearch'
+import PlayerList from './PlayerList'
+import Rankings from './Rankings'
+import DraftSim from './DraftSim'
+import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+
 
 function App() {
 
-  const [hotels, setHotels] = useState([])
-  const [postFormData, setPostFormData] = useState({})
-  const [idToUpdate, setIdToUpdate] = useState(0)
-  const [patchFormData, setPatchFormData] = useState({})
+  const [players, setPlayers] = useState([])
+  const [search, setSearch] = useState("")
+  const [remainingPlayers, setRemainingPlayers] = useState([]);
+
+  const location = useLocation()
+  console.log(location)
 
   useEffect(() => {
-    fetch('/hotels')
+    fetch('/players')
     .then(response => response.json())
-    .then(hotelData => setHotels(hotelData))
+    .then(data => {
+      setPlayers(data)
+      setRemainingPlayers(data)
+    })
   }, [])
 
-  useEffect(() => {
-    if(hotels.length > 0 && hotels[0].id){
-      setIdToUpdate(hotels[0].id)
+  // console.log(players)
+
+
+  function searchPlayer(e) {
+    setSearch(e.target.value)
+  }
+
+  const filterPlayer = players.filter(player => {
+    if (search==="") {
+      return true
     }
-  }, [hotels])
+    return player.name.toLowerCase().includes(search.toLowerCase())
+  })
 
-  function addHotel(event){
-    event.preventDefault()
+  // useEffect(() => {
+  //   fetch('/hotels')
+  //   .then(response => response.json())
+  //   .then(hotelData => setHotels(hotelData))
+  // }, [])
 
-    fetch('/hotels', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(postFormData)
-    })
-    .then(response => response.json())
-    .then(newHotel => setHotels(hotels => [...hotels, newHotel]))
-  }
+  // useEffect(() => {
+  //   if(hotels.length > 0 && hotels[0].id){
+  //     setIdToUpdate(hotels[0].id)
+  //   }
+  // }, [hotels])
 
-  function updateHotel(event){
-    event.preventDefault()
-    fetch(`/hotels/${idToUpdate}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(patchFormData)
-    })
-    .then(response => response.json())
-    .then(updatedHotel => {
-      setHotels(hotels => {
-        return hotels.map(hotel => {
-          if(hotel.id === updatedHotel.id){
-            return updatedHotel
-          }
-          else{
-            return hotel
-          }
-        })
-      })
-    })
-  }
 
-  function deleteHotel(id){
-    fetch(`/hotels/${id}`, {
-      method: "DELETE"
-    })
-    .then(() => setHotels(hotels => {
-      return hotels.filter(hotel => {
-        return hotel.id !== id
-      })
-    }))
-  }
+  // }
 
-  function updatePostFormData(event){
-    setPostFormData({...postFormData, [event.target.name]: event.target.value})
-  }
-
-  function updatePatchFormData(event){
-    setPatchFormData({...patchFormData, [event.target.name]: event.target.value})
-  }
+  function App() {
+  return (
+    <div>
+      <h1>Table Example</h1>
+      <DraftSim players = {players}/>
+    </div>
+  );
+}
 
   return (
     <div className="app">
-      <NavBar/>
-      <Header />
+      <div className="header">
+        <NavBar/>
+        {location.pathname === '/' &&  <Header />}
+      
+    </div>
+      <>
+      {/* {JSON.stringify(players)} */}
+      </>
       <Switch>
+        <Route path="/search">
+          <PlayerSearch searchPlayer = {searchPlayer} search={search}/>
+          <PlayerList players = {filterPlayer} />
+        </Route>
+        <Route path="/rankings">
+          <Rankings players = {players}/>
+        </Route>
+        <Route path="/draft_simulator">
+          <DraftSim setRemainingPlayers={setRemainingPlayers}  remainingPlayers = {remainingPlayers} players = {players} />
+        </Route>
+      </Switch>
+    </div>
+  );
+}
+
+
+
+      /* <Switch>
         <Route exact path="/">
           <h1>Welcome! Here is the list of hotels available:</h1>
           <HotelList hotels={hotels} deleteHotel={deleteHotel}/>
@@ -101,9 +106,6 @@ function App() {
         <Route path="/update_hotel">
           <UpdateHotelForm updateHotel={updateHotel} setIdToUpdate={setIdToUpdate} updatePatchFormData={updatePatchFormData} hotels={hotels}/>
         </Route>
-      </Switch>
-    </div>
-  );
-}
+      </Switch> */
 
 export default App;

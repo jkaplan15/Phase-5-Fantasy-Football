@@ -1,10 +1,13 @@
 function Header(){
     return (
-        <header>
+        <header className="title">
             <h1>
-            Hotels Website
             <span className="logo" role="img">
-                🏨
+            🏈
+            </span>
+            Fantasy Football Corner
+            <span className="logo" role="img">
+            🏈
             </span>
             </h1>
         </header>

@@ -2,9 +2,26 @@
   text-align: center;
 }
 
+.background-image {
+  background-image: url("https://media.pff.com/2021/12/fantasy-rankings.jpeg?w=956&h=538");
+}
+
+.background {
+  /* margin: 0 auto; */
+  /* width: 80vw; */
+  display: flex;
+  gap: 150px;
+  justify-content: center;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.title {
+  /* text-align: center; */
+  padding-top: 8%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -12,6 +29,42 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+
+
+.header {
+  background-image: url("https://w0.peakpx.com/wallpaper/429/45/HD-wallpaper-nfl-teams-logos-ultra-sports-football-logos-brands-nfl-nfl-team-new-england-patriots-miami-dolphins.jpg");
+  background-size: contain;
+  height: 12vh;
+  width:auto;
+  padding-bottom: 60px;
+}
+
+.nav-bar {
+  text-align: left;
+  color: antiquewhite;
+}
+
+nav {
+  padding: 0.2px;
+    display:flex;
+    justify-content: space-evenly;
+    background-color: #ffffffb3;
+}
+
+nav a {
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* .app {
+  background-image: url("https://w0.peakpx.com/wallpaper/429/45/HD-wallpaper-nfl-teams-logos-ultra-sports-football-logos-brands-nfl-nfl-team-new-england-patriots-miami-dolphins.jpg");
+  background-size: contain;
+  height: 10vh;
+  padding-bottom: 60px;
+} */
 
 .App-header {
   background-color: #282c34;
@@ -22,6 +75,45 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+
+.search-bar {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 35vw;
+  text-align: center;
+  padding: 14px;
+  border-radius: 30px;
+  font-size: 22px;
+}
+
+.search {
+  background-color: #e2dfe0;
+}
+
+.Sim-Draft {
+  height: 60px;
+  font-family: 'Audiowide', 'Courier New', Courier, monospace;
+  font-size: 20px;
+  background-color: rgb(53, 92, 223);
+  color: white;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  width: 25%;
+}
+
+.Select-Team {
+  height: 60px;
+  font-family: 'Audiowide', 'Courier New', Courier, monospace;
+  font-size: 20px;
+  background-color: rgb(53, 92, 223);
+  color: white;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  width: 25%;
 }
 
 .App-link {
@@ -36,3 +128,4 @@
     transform: rotate(360deg);
   }
 }
+
