@@ -7,11 +7,14 @@
 }
 
 .background {
-  /* margin: 0 auto; */
+  margin: 0 auto;
   /* width: 80vw; */
   display: flex;
-  gap: 150px;
-  justify-content: center;
+  flex-direction: row;
+  gap: 40px;
+  width: 80vw;
+  align-items: baseline;
+  flex-wrap: wrap;
 }
 
 .App-logo {
@@ -40,13 +43,8 @@
   padding-bottom: 60px;
 }
 
-.nav-bar {
-  text-align: left;
-  color: antiquewhite;
-}
-
 nav {
-  padding: 0.2px;
+  padding: .1px;
     display:flex;
     justify-content: space-evenly;
     background-color: #ffffffb3;
@@ -58,13 +56,6 @@ nav a {
   font-weight: bold;
   text-decoration: none;
 }
-
-/* .app {
-  background-image: url("https://w0.peakpx.com/wallpaper/429/45/HD-wallpaper-nfl-teams-logos-ultra-sports-football-logos-brands-nfl-nfl-team-new-england-patriots-miami-dolphins.jpg");
-  background-size: contain;
-  height: 10vh;
-  padding-bottom: 60px;
-} */
 
 .App-header {
   background-color: #282c34;
@@ -90,6 +81,11 @@ nav a {
 
 .search {
   background-color: #e2dfe0;
+  text-align: center;
+}
+
+.input-search {
+  text-align: center;
 }
 
 .Sim-Draft {
@@ -102,6 +98,13 @@ nav a {
   border-radius: 40px;
   cursor: pointer;
   width: 25%;
+}
+
+.draft {
+  /* display:inline-flex; */
+  gap: 150px;
+  justify-content:center;
+
 }
 
 .Select-Team {
@@ -129,3 +132,147 @@ nav a {
   }
 }
 
+img {
+  text-align: center;
+  width: -moz-fit-content;
+  width: 500px;
+  padding: inherit;
+  height: -moz-fit-content;
+  height: 300px;
+  margin: auto;
+}
+
+.title {
+  font-family: 'Audiowide', cursive;
+  color:rgb(26, 16, 3);
+  text-align:center;
+  margin: 0;
+    padding: 20px;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.player-item {
+  border: solid black 2px;
+  width: 300px;
+  padding: 5px;
+  border: 5px;
+  /* background-color: rgba(255, 255, 255, 0.468); */
+  height: 400px;
+  text-align: center;
+}
+
+.player-item img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+}
+
+.card-back {
+  background-image: url("https://t3.ftcdn.net/jpg/04/68/03/84/360_F_468038425_y7Yju1L6GQUaHPEwsObaoqSZ99VP1D19.jpg");
+  background-size: cover;
+  height: 70%;
+  font-size:small;
+  padding: 0 6px;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+}
+
+.link {
+  font-family: 'Audiowide', cursive;
+  color:antiquewhite
+}
+
+h3 {
+  margin: 6px;
+  font-family: 'Audiowide', cursive;
+  color: antiquewhite;
+
+}
+
+.player-name {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  color:rgb(13, 13, 12);
+  text-align: center;
+}
+
+.new-player-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-player-form input[type="text"] {
+  width: 65%;
+  height: 50px;
+  font-family: 'Audiowide', cursive;
+  font-size: 18px;
+  /* border: none; */
+  border-radius: 14px;
+  margin-bottom: 10px;
+  padding: 20px;
+  margin-left:10px;
+}
+
+.new-player-form button {
+  height: 60px;
+  font-family: 'Audiowide', cursive;
+  font-size: 18px;
+  background-color: rgb(130, 130, 130);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 25%;
+}
+
+.search-bar {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 25vw;
+  padding: 14px;
+  border-radius: 30px;
+  font-size: 22px;
+}
+
+.search-background {
+  background-color: #bfc9b8;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+
+.main-bg {
+  height: 80vh;
+  background-size: cover;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+
+/* #background-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -100;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+} */

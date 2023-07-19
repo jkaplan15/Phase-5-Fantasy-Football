@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from app import app
-from models import db, User, Draft, Player, Team, Draft_team_player
+from models import db, User, Draft, Player, Team, Draft_team_player, Prediction
 
 with app.app_context():
     
@@ -10,6 +10,7 @@ with app.app_context():
     Player.query.delete()
     Team.query.delete()
     Draft_team_player.query.delete()
+    Prediction.query.delete()
 
     users = []
 
@@ -45,6 +46,93 @@ with app.app_context():
     draft_team_players.append(Draft_team_player(team_id=1, draft_id=2, player_id=3))
     draft_team_players.append(Draft_team_player(team_id=1, draft_id=3, player_id=3))
     draft_team_players.append(Draft_team_player(team_id=1, draft_id=4, player_id=3))
+
+    added_predictions = []
+
+    predictions = [
+        {
+      "id": 1,
+      "name": "Austin Ekeler",
+      "image": "https://library.sportingnews.com/styles/twitter_card_120x120/s3/2021-10/austin-ekeler-092020-getty-ftr_1p7eebhpmwduz1qk72izhdbs7x.jpg?itok=w-SJEjPY",
+      "position": "RB",
+      "rushyards": "915",
+      "receptions": "107",
+      "receivingyards": "722",
+      "finish": "RB1",
+      "reason": "will explain later",
+      "expertanalysis": "https://www.rotoballer.com/who-is-the-no-1-overall-pick-for-2023-fantasy-football-austin-ekeler/1126330"
+    },
+    {
+      "id": 2,
+      "name": "Justin Jefferson",
+      "image": "https://www.sharpfootballanalysis.com/wp-content/uploads/2022/01/DFS-ranks-value-week-18-2021-scaled.jpg",
+      "position": "WR",
+      "rushyards": "24",
+      "receptions": "128",
+      "receivingyards": "1809",
+      "finish": "WR1",
+      "reason": "will explain later",
+      "expertanalysis": "https://www.rotoballer.com/who-is-the-no-1-overall-pick-for-2023-fantasy-football-justin-jefferson-fantasy-football-outlook/1126533"
+    },
+    {
+      "id": 3,
+      "name": "Saquon Barkley",
+      "image": "https://cdn.vox-cdn.com/thumbor/P7imISR1ZeUEJ8L5cG1XUhGgiAg=/0x0:3000x1999/1200x800/filters:focal(1187x241:1667x721)/cdn.vox-cdn.com/uploads/chorus_image/image/72210689/1457727885.0.jpg",
+      "position": "RB",
+      "rushyards": "1312",
+      "receptions": "57",
+      "receivingyards": "338",
+      "finish": "RB5",
+      "reason": "will explain later",
+      "expertanalysis": "https://www.rotoballer.com/who-is-the-no-1-overall-pick-for-2023-fantasy-football-saquon-barkley-fantasy-football-outlook/1126352"
+    },
+    {
+      "id": 4,
+      "name": "Cooper Kupp",
+      "image": "https://library.sportingnews.com/2021-10/cooper-kupp-100621-getty-ftr_1n0zqf0b0i6581k44uuysl3b89.jpg",
+      "position": "WR",
+      "rushyards": "1007",
+      "receptions": "39",
+      "receivingyards": "371",
+      "finish": "NA",
+      "reason": "will explain later",
+      "expertanalysis": "https://www.profootballnetwork.com/cooper-kupp-dynasty-profile-2023/"
+    },
+    {
+      "id": 5,
+      "name": "Christian McCaffrey",
+      "image": "https://www.profootballnetwork.com/wp-content/uploads/2023/06/Christian-McCaffrey-Trade-Revisited-Who-Were-the-Real-Winners-and-Losers-from-San-Francisco-49ers-Carolina-Panthers-Trade-scaled.jpg",
+      "position": "WR",
+      "rushyards": "1139",
+      "receptions": "85",
+      "receivingyards": "741",
+      "finish": "RB2",
+      "reason": "will explain later",
+      "expertanalysis": "https://www.rotoballer.com/who-is-the-no-1-overall-pick-for-2023-fantasy-football-should-christian-mccaffrey-be-drafted-first/1126606"
+    },
+    {
+      "id": 8,
+      "name": "Bijan Robinson",
+      "image": "https://i.ytimg.com/vi/AHXWNM7-40c/maxresdefault.jpg",
+      "position": "RB",
+      "rushyards": "NA",
+      "receptions": "NA",
+      "receivingyards": "NA",
+      "finish": "NA",
+      "reason": "will explain later",
+      "expertanalysis": "https://www.espn.in/fantasy/football/story/_/id/37474786/2023-fantasy-football-draft-rankings-bijan-robinson-atlanta-falcons"
+    }
+  ]
+
+    for prediction in predictions:
+        p = Prediction(name=prediction['name'], image=prediction['image'], position=prediction['position'], rushyards=prediction['rushyards'], receptions=prediction['receptions'], receivingyards=prediction['receivingyards'], finish=prediction['finish'], reason=prediction['reason'], expertanalysis=prediction['expertanalysis'] )
+        added_predictions.append(p)
+
+
+
+
+
+    
     
    
 
@@ -52,22 +140,15 @@ with app.app_context():
     
 
 
-
-    # reviews = []
-    # reviews.append(Review(hotel_id=1, customer_id=1, rating=5))
-    # reviews.append(Review(hotel_id=2, customer_id=1, rating=5))
-    # reviews.append(Review(hotel_id=1, customer_id=2, rating=4))
-    # reviews.append(Review(hotel_id=1, customer_id=1, rating=3))
-
-
     db.session.add_all(users)
     db.session.add_all(drafts)
     db.session.add_all(added_players)
     db.session.add_all(teams)
     db.session.add_all(draft_team_players)
+    db.session.add_all(added_predictions)
 
 
 
     # db.session.add_all(reviews)
     db.session.commit()
-    print("🌱 Users, Drafts, Players, Teams, Draft_team_players successfully seeded! 🌱")
+    print("🌱 Users, Drafts, Players, Teams, Draft_team_players, Predictions successfully seeded! 🌱")
