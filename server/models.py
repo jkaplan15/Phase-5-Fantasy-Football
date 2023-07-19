@@ -79,15 +79,14 @@ class Prediction(db.Model, SerializerMixin):
     reason = db.Column(db.String, nullable=False)
     expertanalysis = db.Column(db.String)
 
-
-
+    @validates('name')
+    def validate_name(self, key, value):
+        if len(value) < 4:
+            raise ValueError('name must be at least 4 characters long')
+        return value
     
-    
-
-
-
-
-
-
-
-#     
+    @validates('reason')
+    def validate_reason(self, key, value):
+        if len(value) < 10:
+            raise ValueError('reason must be at least 10 characters long')
+        return value

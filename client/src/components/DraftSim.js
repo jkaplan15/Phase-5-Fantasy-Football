@@ -119,7 +119,8 @@ function DraftSim({ players, remainingPlayers, setRemainingPlayers }) {
     const myTeam =  draftedPlayers.filter(({ team, player }, index) => team !== 'Computer')
 
     return (
-        <div className="draft">
+        <>
+
             <button onClick={simulateDraft} className = "Sim-Draft">Simulate Draft</button>
             <div>
                 <label htmlFor="userPick">Select your team:</label>
@@ -132,14 +133,22 @@ function DraftSim({ players, remainingPlayers, setRemainingPlayers }) {
                     ))}
                 </select>
             </div>
+        
+        <div className="draft">
+        
+            <div>
             {draftedPlayers.map(({ team, player }, index) => (
                 <div key={player.name}>
                     Pick {index + 1}: Team {team} selects {player.name}
                 </div>
             ))}
+            </div>
+            <div>
             <h4 className="my-team">My Team:</h4>
            <div>{myTeam.map(({ team, player }, index) => <div>{player.name}</div>)}</div>
+           </div>
         </div>
+        </>
     );
 }
 

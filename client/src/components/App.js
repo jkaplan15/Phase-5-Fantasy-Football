@@ -79,7 +79,9 @@ function App() {
   }
 
   function editPlayer(e, form, id) {
+   
     e.preventDefault()
+  
     fetch(`/predictions/${id}`, {
       method: "PATCH",
       headers: {
@@ -90,7 +92,8 @@ function App() {
     })
     .then(response => {
       if (!response.ok) {
-        throw new Error("Failed to edit player.");
+        // throw new Error();
+        alert("Failed to edit player.")
       }
       return response.json();
     })

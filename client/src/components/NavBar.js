@@ -9,7 +9,7 @@ function NavBar(){
                 <NavLink to="/draft_simulator">Draft Simulator</NavLink>
                 <NavLink to="/playercard">#1 Overall</NavLink>
                 <NavLink to="/predictions">Predictions</NavLink>
-                <NavLink to="/login">Login</NavLink>
+                {/* <NavLink to="/login">Login</NavLink> */}
         </nav>
     )
 }

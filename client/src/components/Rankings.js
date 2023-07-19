@@ -2,10 +2,10 @@ import PlayerInfo from './PlayerInfo'
 
 function Rankings({players}){
     return (
-        <div className="background">
+        <div className="background-rankings">
         <div className='raking-group'>
             <h1 className="title">WR</h1>
-             <div className="flex-container">
+             <div className="flex-container-rankings">
               {players.map((player) => {
                 if (player.position==='WR') {
                     return (
@@ -20,7 +20,7 @@ function Rankings({players}){
             </div>
             <div className='raking-group'>
         <h1 className="title">RB</h1>
-        <div className="flex-container">
+        <div className="flex-container-rankings">
               {players.map((player) => {
                 if (player.position==='RB') {
                     return (
@@ -35,7 +35,7 @@ function Rankings({players}){
         </div>
         <div className='raking-group'>
         <h1 className="title">QB</h1>
-        <div className="flex-container">
+        <div className="flex-container-rankings">
               {players.map((player) => {
                 if (player.position==='QB') {
                     return (
@@ -50,7 +50,7 @@ function Rankings({players}){
         </div>
         <div className='raking-group'>
         <h1 className="title">TE</h1>
-        <div className="flex-container">
+        <div className="flex-container-rankings">
               {players.map((player) => {
                 if (player.position==='TE') {
                     return (

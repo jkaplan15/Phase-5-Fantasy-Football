@@ -52,14 +52,17 @@ class Predictions(Resource):
         return make_response(jsonify(response_body), 200)
     
     def post(self):
-        data = request.get_json()
-        new_prediction = Prediction(
-            name=data['name'], reason=data['reason'], image=data['image'])
-        print(new_prediction)
-        db.session.add(new_prediction)
-        db.session.commit()
-        response_body = new_prediction.to_dict()
-        return make_response(jsonify(response_body), 201)
+        try:
+            data = request.get_json()
+            new_prediction = Prediction(
+                name=data['name'], reason=data['reason'], image=data['image'])
+            print(new_prediction)
+            db.session.add(new_prediction)
+            db.session.commit()
+            response_body = new_prediction.to_dict()
+            return make_response(jsonify(response_body), 201)
+        except ValueError:
+            return ValueError
     
 api.add_resource(Predictions, '/predictions')
 
@@ -72,12 +75,21 @@ class PredictionsById(Resource):
     
     def patch(self, id):
         predictions = Prediction.query.filter_by(id = id).first()
-        data = request.get_json()
-        for attr in data:
-            setattr(predictions, attr, data[attr])
-        db.session.commit()
-        response_body = predictions.to_dict()
-        return make_response(jsonify(response_body), 202)
+        if not predictions:
+            response_body = {
+                "error": "Prediction not found"
+            }
+            return make_response(jsonify(response_body), 404)
+        try:
+            data = request.get_json()
+            for attr in data:
+                setattr(predictions, attr, data[attr])
+            db.session.add(predictions)
+            db.session.commit()
+            response_body = predictions.to_dict()
+            return make_response(jsonify(response_body), 202)
+        except ValueError:
+            return {'error': 'validation errors'}, 400
     
     def delete(self, id):
         prediction = Prediction.query.get(id)

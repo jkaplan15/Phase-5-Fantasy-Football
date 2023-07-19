@@ -13,7 +13,7 @@ function Header(){
             </h1>
         </header>
         <div className="main-bg">
-            <img src='logo.jpg' />
+            <img className="logo-img" src='logo.jpg' />
         </div>
         </>
     )
