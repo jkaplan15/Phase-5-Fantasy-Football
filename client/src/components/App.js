@@ -1,7 +1,6 @@
 import '../App.css';
 import {useState, useEffect} from 'react'
 import { Route, Switch } from "react-router-dom"
-
 import NavBar from './NavBar'
 import Header from './Header'
 import PlayerSearch from './PlayerSearch'
@@ -145,8 +144,6 @@ function App() {
   );
 }
 
-
-
   return (
     <div className="app">
       <div className="header">
@@ -179,20 +176,5 @@ function App() {
     </div>
   );
 }
-
-
-
-      /* <Switch>
-        <Route exact path="/">
-          <h1>Welcome! Here is the list of hotels available:</h1>
-          <HotelList hotels={hotels} deleteHotel={deleteHotel}/>
-        </Route>
-        <Route path="/add_hotel">
-          <NewHotelForm addHotel={addHotel} updatePostFormData={updatePostFormData}/>
-        </Route>
-        <Route path="/update_hotel">
-          <UpdateHotelForm updateHotel={updateHotel} setIdToUpdate={setIdToUpdate} updatePatchFormData={updatePatchFormData} hotels={hotels}/>
-        </Route>
-      </Switch> */
 
 export default App;

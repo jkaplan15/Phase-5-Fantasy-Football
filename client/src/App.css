@@ -28,13 +28,13 @@
 .background-rankings {
   margin: 0 auto;
   display: flex;
-  padding-left: 250px;
+  padding-left: 220px;
   padding-right: 250px;
   height: auto;
   width: auto;
   flex-wrap: nowrap;
   text-align: center;
-  gap: 200px;
+  gap: 250px;
 }
 
 .App-logo {

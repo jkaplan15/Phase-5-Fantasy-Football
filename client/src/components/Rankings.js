@@ -11,7 +11,7 @@ function Rankings({players}){
                     return (
                   
                         <div>{player.rank_position}. {player.name}</div>
-               
+
                     )
                 }
                

@@ -9,5 +9,4 @@ function PlayerSearch({searchPlayer, search}) {
     )
 }
 
-
 export default PlayerSearch
